@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape to Kigali | Jogee Trips</title>
+    <title>Escape to Kigali | FOGEE WILD JOURNEYS</title>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts: modern, clean -->
@@ -44,19 +44,12 @@
             gap: 12px;
         }
 
-        .logo-placeholder {
-            width: 60px;
+        .logo-image {
             height: 60px;
-            background: linear-gradient(135deg, #1e3c5c, #2a5f7a);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
-            box-shadow: 0 6px 14px rgba(0,20,30,0.15);
-            letter-spacing: 1px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            border-radius: 8px;
         }
 
         .logo-text {
@@ -340,6 +333,57 @@
             font-size: 0.9rem;
         }
 
+        /* GALLERY SECTION (new) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 28px;
+            margin: 30px 0 20px;
+        }
+        .gallery-item {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            transition: 0.25s ease;
+            border: 1px solid #eef3f7;
+        }
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+        }
+        .gallery-item .gallery-img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background-size: cover;
+            background-position: center;
+            background-color: #e2e8f0;
+        }
+        .gallery-item .gallery-info {
+            padding: 18px 20px 22px;
+        }
+        .gallery-item .gallery-info h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0b2a3b;
+            margin-bottom: 4px;
+        }
+        .gallery-item .gallery-info p {
+            font-size: 0.95rem;
+            color: #4a5a6a;
+            margin-top: 6px;
+        }
+        .gallery-item .gallery-info .badge {
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 2px 14px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1e3c5c;
+            margin-top: 8px;
+        }
+
         /* CTA + register */
         .cta-block {
             background: linear-gradient(145deg, #f8f5ee, #f0ebe1);
@@ -464,19 +508,21 @@
                 align-items: flex-start;
                 gap: 20px;
             }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Header with Logo -->
+    <!-- Header with Logo (FOGEE WILD JOURNEYS) -->
     <header class="navbar">
         <div class="logo-area">
-            <div class="logo-placeholder">
-                <i class="fas fa-route" style="font-size: 28px;"></i>
-            </div>
-            <div class="logo-text">JOGEE <span>TRIPS</span></div>
+            <!-- Real logo image -->
+            <img src="https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Rogee_Logo" alt="FOGEE WILD JOURNEYS Logo" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="logo-text" style="display: none;">FOGEE <span>WILD JOURNEYS</span></div>
         </div>
         <div class="cta-top">
             <a href="#register" class="btn btn-primary"><i class="fas fa-phone-alt"></i> +256 705 135227</a>
@@ -554,6 +600,87 @@
         </div>
     </section>
 
+    <!-- NEW GALLERY SECTION -->
+    <section id="gallery">
+        <h2 class="section-title">Places & Experiences</h2>
+        <div class="section-sub">Discover the highlights of your Kigali adventure</div>
+        <div class="gallery-grid">
+            <!-- Gallery items with images and descriptions -->
+            <div class="gallery-item">
+                <div class="gallery-img" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/white%20stone%20appartment.jfif');"></div>
+                <div class="gallery-info">
+                    <h4>White Stone Apartment</h4>
+                    <p>Comfortable & secure accommodation in Kigali. Your home away from home during the trip.</p>
+                    <span class="badge">Accommodation</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Amahoro%20stadium.jfif');"></div>
+                <div class="gallery-info">
+                    <h4>Amahoro Stadium</h4>
+                    <p>Rwanda's national stadium. A symbol of unity and a vibrant spot for sports and events.</p>
+                    <span class="badge">Landmark</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/BK_Arena.jfif');"></div>
+                <div class="gallery-info">
+                    <h4>BK Arena</h4>
+                    <p>Kigali's modern indoor arena, hosting concerts and basketball games. A hub of entertainment.</p>
+                    <span class="badge">Entertainment</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Nyandungu_Eco_Park.jfif');"></div>
+                <div class="gallery-info">
+                    <h4>Nyandungu Eco-Park</h4>
+                    <p>A restored wetland and urban park. Perfect for nature walks, bird watching and photography.</p>
+                    <span class="badge">Nature</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Kigali%20genocide%20memorial.jfif');"></div>
+                <div class="gallery-info">
+                    <h4>Kigali Genocide Memorial</h4>
+                    <p>A place of remembrance and learning. A profound experience that honors Rwanda's history.</p>
+                    <span class="badge">History</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Mumarangi.jfif');"></div>
+                <div class="gallery-info">
+                    <h4>Mumarangi</h4>
+                    <p>Immerse in local culture with a 1-hour experience. Connect with the community.</p>
+                    <span class="badge">Culture</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Brocheette.jfif');"></div>
+                <div class="gallery-info">
+                    <h4>Brochettes</h4>
+                    <p>Kigali's famous grilled meat skewers. A must-try local delicacy, full of flavor.</p>
+                    <span class="badge">Food</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Chicken_.jfif');"></div>
+                <div class="gallery-info">
+                    <h4>Local Cuisine</h4>
+                    <p>Enjoy authentic Rwandan dishes. A delicious journey for your taste buds.</p>
+                    <span class="badge">Food</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Hotel.jfif');"></div>
+                <div class="gallery-info">
+                    <h4>Kigali Hotels</h4>
+                    <p>Relax in quality hotels with great amenities. Your comfort is our priority.</p>
+                    <span class="badge">Accommodation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing -->
     <section id="pricing">
         <h2 class="section-title">Choose Your Group Size</h2>
@@ -604,7 +731,7 @@
     <!-- Footer with NEROXIAFRICA -->
     <footer class="footer">
         <div>
-            <span style="font-weight: 600; color: #0b2a3b;">© 2026 JOGEE TRIPS</span>
+            <span style="font-weight: 600; color: #0b2a3b;">© 2026 FOGEE WILD JOURNEYS</span>
         </div>
         <div class="nero">
             <i class="fas fa-crown" style="color: #d4a13e;"></i> Powered by <a href="https://neroxiafrica.com" target="_blank">NEROXIAFRICA</a>
@@ -615,7 +742,5 @@
     </footer>
 </div>
 
-<!-- Extra images loaded as background: we used them in hero -->
-<!-- All flyer info integrated: days, pricing, includes, contacts -->
 </body>
 </html>
