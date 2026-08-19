@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape to Kigali | Jogee Trips</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: modern, clean -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9f6;
+            color: #1e1e2a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HEADER & NAV */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1e3c5c, #2a5f7a);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 20px;
+            box-shadow: 0 6px 14px rgba(0,20,30,0.15);
+            letter-spacing: 1px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #0b2a3b;
+        }
+        .logo-text span {
+            color: #d4a13e;
+        }
+
+        .cta-top {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: #d4a13e;
+            color: #0b2a3b;
+            box-shadow: 0 4px 10px rgba(212, 161, 62, 0.3);
+        }
+        .btn-primary:hover {
+            background: #c08e2e;
+            transform: scale(1.02);
+            box-shadow: 0 6px 16px rgba(212, 161, 62, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #1e3c5c;
+            color: #1e3c5c;
+        }
+        .btn-outline:hover {
+            background: #1e3c5c;
+            color: white;
+        }
+
+        /* HERO */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            padding: 40px 0 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #0b2a3b;
+        }
+        .hero-content h1 i {
+            color: #d4a13e;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #3a4a5a;
+            margin: 24px 0 32px;
+            max-width: 90%;
+        }
+        .hero-badge {
+            background: #eef3f7;
+            padding: 8px 18px;
+            border-radius: 60px;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1e3c5c;
+            margin-bottom: 20px;
+        }
+        .hero-badge i {
+            margin-right: 8px;
+            color: #d4a13e;
+        }
+
+        .hero-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .hero-gallery .img-card {
+            background: #e2e8f0;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transition: 0.3s;
+            border: 2px solid white;
+        }
+        .hero-gallery .img-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+        .img-card-lg {
+            grid-row: span 2;
+        }
+
+        /* section titles */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0b2a3b;
+        }
+        .section-sub {
+            color: #5a6a7a;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            border-left: 4px solid #d4a13e;
+            padding-left: 18px;
+        }
+
+        /* itinerary cards */
+        .itinerary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+            margin: 40px 0 20px;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px 22px 28px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+        .day-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 20, 30, 0.08);
+        }
+        .day-card .day-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #eef3f7;
+            padding-bottom: 14px;
+            margin-bottom: 18px;
+        }
+        .day-card .day-num {
+            background: #1e3c5c;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .day-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0b2a3b;
+        }
+        .day-card ul {
+            list-style: none;
+            margin-top: 8px;
+        }
+        .day-card li {
+            padding: 6px 0;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            color: #2a3a4a;
+        }
+        .day-card li i {
+            color: #d4a13e;
+            width: 20px;
+            margin-top: 4px;
+            font-size: 0.9rem;
+        }
+        .day-card .highlight {
+            background: #f8f3e8;
+            border-radius: 40px;
+            padding: 6px 16px;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #7a5a2a;
+            margin-top: 10px;
+        }
+
+        /* pricing cards */
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0 20px;
+        }
+        .pricing-card {
+            background: white;
+            border-radius: 32px;
+            padding: 30px 28px;
+            flex: 1 1 200px;
+            min-width: 180px;
+            max-width: 240px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            border: 1px solid #eef3f7;
+            transition: 0.2s;
+        }
+        .pricing-card:hover {
+            border-color: #d4a13e;
+            box-shadow: 0 12px 32px rgba(212, 161, 62, 0.12);
+        }
+        .pricing-card .price {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #0b2a3b;
+            margin: 16px 0 6px;
+        }
+        .pricing-card .price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #5a6a7a;
+        }
+        .pricing-card .pax {
+            background: #f0f4f8;
+            border-radius: 60px;
+            padding: 4px 12px;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1e3c5c;
+        }
+        .pricing-card .feature {
+            margin-top: 16px;
+            font-size: 0.95rem;
+            color: #3a4a5a;
+        }
+
+        /* includes box */
+        .includes-box {
+            background: #0b2a3b;
+            color: white;
+            border-radius: 40px;
+            padding: 40px 48px;
+            margin: 40px 0 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+        }
+        .includes-box i {
+            color: #d4a13e;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        .includes-box div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .includes-box div span {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .includes-box div small {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* CTA + register */
+        .cta-block {
+            background: linear-gradient(145deg, #f8f5ee, #f0ebe1);
+            border-radius: 48px;
+            padding: 48px 40px;
+            margin: 40px 0 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cta-block h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0b2a3b;
+        }
+        .cta-block .phone {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1e3c5c;
+            letter-spacing: 1px;
+        }
+        .cta-block .phone i {
+            color: #d4a13e;
+            margin-right: 12px;
+        }
+        .cta-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* payment methods */
+        .payment-methods {
+            background: white;
+            border-radius: 32px;
+            padding: 32px 36px;
+            margin: 20px 0 40px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+            border: 1px solid #eef3f7;
+        }
+        .payment-methods h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .payment-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        .payment-item {
+            background: #f8fafc;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .payment-item i {
+            font-size: 1.4rem;
+            color: #1e3c5c;
+        }
+
+        /* footer */
+        .footer {
+            border-top: 1px solid #e2e8f0;
+            padding: 32px 0 24px;
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer .nero {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .footer .nero a {
+            color: #0b2a3b;
+            text-decoration: none;
+            border-bottom: 2px solid #d4a13e;
+        }
+        .footer .nero a:hover {
+            color: #d4a13e;
+        }
+
+        /* responsiveness */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+            .includes-box {
+                padding: 30px 24px;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 16px;
+            }
+            .cta-top {
+                flex-wrap: wrap;
+            }
+            .hero-gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+            .pricing-grid {
+                gap: 16px;
+            }
+            .cta-block {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header with Logo -->
+    <header class="navbar">
+        <div class="logo-area">
+            <div class="logo-placeholder">
+                <i class="fas fa-route" style="font-size: 28px;"></i>
+            </div>
+            <div class="logo-text">JOGEE <span>TRIPS</span></div>
+        </div>
+        <div class="cta-top">
+            <a href="#register" class="btn btn-primary"><i class="fas fa-phone-alt"></i> +256 705 135227</a>
+            <a href="#pricing" class="btn btn-outline">View Pricing</a>
+        </div>
+    </header>
+
+    <!-- Hero section with images from flyer -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-calendar-check"></i> 4 DAYS · 3 NIGHTS</div>
+            <h1>ESCAPE TO <i>KIGALI</i></h1>
+            <p><strong>Kampala → Kigali → Kampala</strong> · An unforgettable student experience blending history, city life, nature, nightlife &amp; great food.</p>
+            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                <a href="#itinerary" class="btn btn-primary"><i class="fas fa-map-signs"></i> View Itinerary</a>
+                <a href="#register" class="btn btn-outline"><i class="fas fa-user-plus"></i> Register Now</a>
+            </div>
+        </div>
+        <div class="hero-gallery">
+            <div class="img-card img-card-lg" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Kigali_Kampala_2.jfif');"></div>
+            <div class="img-card" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Kigali%20genocide%20memorial.jfif');"></div>
+            <div class="img-card" style="background-image: url('https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Kigali_View.jfif');"></div>
+        </div>
+    </section>
+
+    <!-- Itinerary -->
+    <section id="itinerary">
+        <h2 class="section-title">Your 4‑Day Journey</h2>
+        <div class="section-sub">Carefully curated for fun, reflection, and connection</div>
+        <div class="itinerary-grid">
+            <div class="day-card">
+                <div class="day-head"><span class="day-num">1</span><h3>Friday</h3></div>
+                <ul>
+                    <li><i class="fas fa-bus"></i> 10:00 AM depart Kampala</li>
+                    <li><i class="fas fa-coffee"></i> Scenic drive, stopovers &amp; lunch</li>
+                    <li><i class="fas fa-passport"></i> Cross Gatuna/Katuna border</li>
+                    <li><i class="fas fa-hotel"></i> Arrive Kigali, check‑in</li>
+                    <li><i class="fas fa-utensils"></i> Relaxed dinner &amp; interaction</li>
+                </ul>
+                <span class="highlight"><i class="far fa-clock"></i> The Journey Begins</span>
+            </div>
+            <div class="day-card">
+                <div class="day-head"><span class="day-num">2</span><h3>Saturday</h3></div>
+                <ul>
+                    <li><i class="fas fa-flag"></i> Kigali Genocide Memorial</li>
+                    <li><i class="fas fa-car"></i> City drive &amp; neighbourhoods</li>
+                    <li><i class="fas fa-futbol"></i> Amahoro Stadium</li>
+                    <li><i class="fas fa-landmark"></i> Convention Centre, Heights, Car Free Zone</li>
+                    <li><i class="fas fa-music"></i> Kigali by night – best music club</li>
+                </ul>
+                <span class="highlight"><i class="fas fa-city"></i> Discover &amp; nightlife</span>
+            </div>
+            <div class="day-card">
+                <div class="day-head"><span class="day-num">3</span><h3>Sunday</h3></div>
+                <ul>
+                    <li><i class="fas fa-pray"></i> Morning prayers / church / leisure</li>
+                    <li><i class="fas fa-tree"></i> Nyandungu Eco‑Park &amp; Wetland</li>
+                    <li><i class="fas fa-home"></i> Freshen up</li>
+                    <li><i class="fas fa-utensils"></i> Mumarangi 1‑hr local experience</li>
+                    <li><i class="fas fa-fire"></i> <strong>Nyama Choma</strong> roast, music &amp; laughter</li>
+                </ul>
+                <span class="highlight"><i class="fas fa-drumstick-bite"></i> Relax &amp; feast</span>
+            </div>
+            <div class="day-card">
+                <div class="day-head"><span class="day-num">4</span><h3>Monday</h3></div>
+                <ul>
+                    <li><i class="fas fa-coffee"></i> Breakfast, check‑out</li>
+                    <li><i class="fas fa-bus"></i> Depart Kigali 8:00 AM</li>
+                    <li><i class="fas fa-route"></i> Stopovers &amp; lunch en route</li>
+                    <li><i class="fas fa-passport"></i> Border formalities</li>
+                    <li><i class="fas fa-home"></i> Arrive Kampala evening</li>
+                </ul>
+                <span class="highlight"><i class="fas fa-flag-checkered"></i> Journey home</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+        <h2 class="section-title">Choose Your Group Size</h2>
+        <div class="section-sub">Affordable rates for an epic experience</div>
+        <div class="pricing-grid">
+            <div class="pricing-card"><span class="pax"><i class="fas fa-users"></i> 10 people</span><div class="price">550K <small>UGX</small></div><div class="feature">per person</div></div>
+            <div class="pricing-card"><span class="pax"><i class="fas fa-users"></i> 25 people</span><div class="price">450K <small>UGX</small></div><div class="feature">per person</div></div>
+            <div class="pricing-card"><span class="pax"><i class="fas fa-users"></i> 50 people</span><div class="price">350K <small>UGX</small></div><div class="feature">per person</div></div>
+        </div>
+    </section>
+
+    <!-- What's included -->
+    <div class="includes-box">
+        <div><i class="fas fa-bus"></i><span>Transport</span><small>Kampala – Kigali – Kampala</small></div>
+        <div><i class="fas fa-bed"></i><span>Accommodation</span><small>3 nights</small></div>
+        <div><i class="fas fa-utensils"></i><span>Meals</span><small>Breakfast, Lunch, Dinner</small></div>
+        <div><i class="fas fa-ticket-alt"></i><span>Activities &amp; Entry</span><small>All fees covered</small></div>
+        <div><i class="fas fa-user-tie"></i><span>Pro Coordination</span><small>Safety &amp; fun</small></div>
+    </div>
+
+    <!-- Registration & payment -->
+    <section id="register">
+        <div class="cta-block">
+            <div>
+                <h2><i class="fas fa-phone-alt" style="color: #d4a13e;"></i> Register Now</h2>
+                <p style="font-size: 1.1rem; color: #2a3a4a;">Call or WhatsApp to secure your spot</p>
+                <div class="phone"><i class="fas fa-phone"></i> +256 705 135227</div>
+            </div>
+            <div class="cta-actions">
+                <a href="tel:+256705135227" class="btn btn-primary" style="font-size: 1.2rem; padding: 14px 32px;"><i class="fas fa-phone"></i> Call Now</a>
+                <a href="#" class="btn btn-outline" style="font-size: 1.2rem; padding: 14px 32px;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- Payment methods -->
+        <div class="payment-methods">
+            <h3><i class="fas fa-credit-card" style="color: #d4a13e;"></i> Flexible Payment Options</h3>
+            <div class="payment-grid">
+                <div class="payment-item"><i class="fas fa-mobile-alt"></i> Mobile Money</div>
+                <div class="payment-item"><i class="fas fa-university"></i> Bank Transfer</div>
+                <div class="payment-item"><i class="fas fa-wallet"></i> Cash (on arrangement)</div>
+                <div class="payment-item"><i class="fas fa-hand-holding-usd"></i> Partial deposit accepted</div>
+            </div>
+            <p style="margin-top: 16px; color: #3a4a5a; font-size: 0.95rem;"><i class="fas fa-info-circle"></i> Contact us for payment details &amp; confirmation. Group discounts available.</p>
+        </div>
+    </section>
+
+    <!-- Footer with NEROXIAFRICA -->
+    <footer class="footer">
+        <div>
+            <span style="font-weight: 600; color: #0b2a3b;">© 2026 JOGEE TRIPS</span>
+        </div>
+        <div class="nero">
+            <i class="fas fa-crown" style="color: #d4a13e;"></i> Powered by <a href="https://neroxiafrica.com" target="_blank">NEROXIAFRICA</a>
+        </div>
+        <div>
+            <span style="color: #5a6a7a; font-size: 0.9rem;"><i class="fas fa-map-pin"></i> Kampala · Kigali</span>
+        </div>
+    </footer>
+</div>
+
+<!-- Extra images loaded as background: we used them in hero -->
+<!-- All flyer info integrated: days, pricing, includes, contacts -->
+</body>
+</html>
