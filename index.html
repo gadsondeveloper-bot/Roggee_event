@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts: modern, clean -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- html2pdf library (professional PDF generation) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         * {
             margin: 0;
@@ -98,6 +100,16 @@
         .btn-outline:hover {
             background: #1e3c5c;
             color: white;
+        }
+
+        .btn-pdf {
+            background: #1e3c5c;
+            color: white;
+            box-shadow: 0 4px 10px rgba(30, 60, 92, 0.3);
+        }
+        .btn-pdf:hover {
+            background: #0b2a3b;
+            transform: scale(1.02);
         }
 
         /* HERO */
@@ -476,6 +488,15 @@
             color: #d4a13e;
         }
 
+        /* PDF toolbar */
+        .pdf-toolbar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 12px 0 8px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
         /* responsiveness */
         @media (max-width: 900px) {
             .hero {
@@ -512,17 +533,39 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
+
+        /* print/PDF optimizations */
+        @media print {
+            .pdf-toolbar {
+                display: none !important;
+            }
+            .btn-pdf, .btn-outline, .btn-primary {
+                box-shadow: none !important;
+            }
+            .hero-gallery .img-card {
+                break-inside: avoid;
+            }
+            .day-card, .pricing-card, .gallery-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Header with Logo (FOGEE WILD JOURNEYS) -->
+<div class="container" id="flyer-content">
+    <!-- PDF Toolbar -->
+    <div class="pdf-toolbar">
+        <button id="downloadPdfBtn" class="btn btn-pdf"><i class="fas fa-file-pdf"></i> Download PDF Flyer</button>
+    </div>
+
+    <!-- Header with Logo (Jogee Tours and Travel) -->
     <header class="navbar">
         <div class="logo-area">
             <!-- Real logo image -->
-            <img src="https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Rogee_Logo" alt="FOGEE WILD JOURNEYS Logo" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="logo-text" style="display: none;">FOGEE <span>WILD JOURNEYS</span></div>
+            <img src="https://lbbnq8hwr59f9gfg.public.blob.vercel-storage.com/Rogee_Logo" alt="Jogee Tours and Travel Logo" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="logo-text" style="display: none;">JOGEE <span>Tour and Travel</span></div>
         </div>
         <div class="cta-top">
             <a href="#register" class="btn btn-primary"><i class="fas fa-phone-alt"></i> +256 705 135227</a>
@@ -731,7 +774,7 @@
     <!-- Footer with NEROXIAFRICA -->
     <footer class="footer">
         <div>
-            <span style="font-weight: 600; color: #0b2a3b;">© 2026 FOGEE WILD JOURNEYS</span>
+            <span style="font-weight: 600; color: #0b2a3b;">© 2026 Jogee Tours and Travel</span>
         </div>
         <div class="nero">
             <i class="fas fa-crown" style="color: #d4a13e;"></i> Powered by <a href="https://neroxiafrica.com" target="_blank">NEROXIAFRICA</a>
@@ -741,6 +784,26 @@
         </div>
     </footer>
 </div>
+
+<script>
+    (function() {
+        const downloadBtn = document.getElementById('downloadPdfBtn');
+        const element = document.getElementById('flyer-content');
+
+        downloadBtn.addEventListener('click', function() {
+            // professional PDF options
+            const opt = {
+                margin:        [0.5, 0.5, 0.5, 0.5], // top, right, bottom, left (in inches)
+                filename:      'Escape_to_Kigali_Flyer_Jogee.pdf',
+                image:         { type: 'jpeg', quality: 0.98 },
+                html2canvas:   { scale: 2, useCORS: true, letterRendering: true },
+                jsPDF:         { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            // Call html2pdf with the element and options
+            html2pdf().set(opt).from(element).save();
+        });
+    })();
+</script>
 
 </body>
 </html>
